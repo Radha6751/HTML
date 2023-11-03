@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://127.0.0.1:5500/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tempreture conventer</title>
+    <style>
+        body {
+            padding: 50px 100px;
+        }
+
+        h1{
+            text-align: center;
+        }
+
+        #container{
+            text-align: center;
+            background-color: aqua;
+            padding: 50px;
+        }
+        .input-div{
+            
+            display:inline-block;
+        }
+        .inp{
+            padding: 5px 10px;
+            margin: 10px;
+            font-size: 30px;
+            font-weight:bold;
+            width: 250px;
+            text-align: center;
+        }
+        label{
+            font-size: 30px;
+        }
+        
+
+        
+    </style>
+</head>
+-<body>
+    <h1>
+        tempreture conventer
+    </h1>
+    <div id="container">
+        <div id="input-div">
+            <label>celsius</label><br>
+            <input type="number" value="0" id="cel" class="inp">
+        </div>
+        <div id="input-div">
+            <label>fahrenheit</label><br>
+            <input type="number" value="32" id="fah" class="inp">
+        </div>
+    </div>
+
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '')-;-
+                        elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+<script>
+    var cel =document.getElementById("cel");
+    var fah =document.getElementById("fah");
+     cel.addEventListener('input',function(){
+        let c = this.value;
+        let f = C(9/5) + 32;
+        fah.value = f;
+
+    });
+    fah.addEventListener('input',function(){
+      let f = this.value;
+      let c = (F - 32) * 5/9;
+      cel.value = c;
+    });
+
+</script>
+</body></html>
+
+
